@@ -1,10 +1,10 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
-const config: CapacitorConfig = {
+const  CapacitorConfig = {
   appId: 'com.example.googleimageclone',
   appName: 'GoogleImageClone',
   webDir: 'dist',
-  // bundledWebRuntime: false,
+  bundledWebRuntime: false,
   plugins: {
     Camera: {
       presentationStyle: 'fullscreen'
