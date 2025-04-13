@@ -7,6 +7,7 @@ import Header from "./TopBar/Header";
 import SearchBar from "./SearchBar/SearchBar";
 // import SearchBar from "./SearchBar";
 import BottomNavBar from "./BottomNavBar/BottomNavBar";
+import ResultsPage from "../ResultsPage/ResultsPage";
 
 export const HomePage = () => {
   const { isSignedIn, signIn, signOut } = useContext(AppContext);
@@ -21,6 +22,7 @@ export const HomePage = () => {
       <Header />
       <SearchBar onImageSearchClick={handleImageSearch} />
       <BottomNavBar />
+      {/* <ResultsPage/> */}
     </HomePageContainer>
   );
 };

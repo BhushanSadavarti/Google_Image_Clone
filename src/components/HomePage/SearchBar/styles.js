@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   background-color: #202124;
@@ -112,4 +112,59 @@ export const SuggestionHeader = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 13px;
+`;
+
+export const MicScreenWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #202124;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+export const Dots = keyframes`
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+`;
+
+export const DotContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  margin: 20px 0;
+`;
+
+export const Dot = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: ${({ color }) => color};
+  animation: ${Dots} 1s infinite ease-in-out;
+
+  &:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+`;
+
+export const MicText = styled.div`
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
 `;
