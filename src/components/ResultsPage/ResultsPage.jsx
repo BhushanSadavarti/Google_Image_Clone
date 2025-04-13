@@ -15,7 +15,7 @@ import {
 import { ArrowLeft } from "lucide-react";
 
 const ResultsPage = () => {
-  const { searchTerm, searchImage, results, loading } = useContext(AppContext);
+  const { searchTerm, searchImage, results, loading, performSearch } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -33,17 +33,17 @@ const ResultsPage = () => {
           <ArrowLeft size={20} />
         </button>
 
-        <SearchBar
+        {/* <SearchBar
           onImageSearchClick={handleImageSearch}
           placeholder="Search Google"
-        />
+        /> */}
       </ResultsHeader>
 
-      {searchImage && (
+      {/* {searchImage && (
         <SearchImagePreview>
           <img src={searchImage} alt="Search" />
         </SearchImagePreview>
-      )}
+      )} */}
 
       <ResultsWrapper>
         {loading ? (

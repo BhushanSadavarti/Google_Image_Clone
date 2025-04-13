@@ -17,6 +17,7 @@ export const ResultsHeader = styled.header`
   top: 0;
   background-color: #fff;
   z-index: 100;
+   background-color: #202124;
 
   button {
     background: transparent;
@@ -51,6 +52,8 @@ export const SearchImagePreview = styled.div`
 `;
 
 export const ResultsWrapper = styled.div`
+height: 100vh;
+ background-color: #202124;
   padding: 16px;
 `;
 
@@ -74,6 +77,7 @@ export const ImageResultContainer = styled.div`
   margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid #ebebeb;
+  color: #ffffff
 `;
 
 export const TextResultContainer = styled.div`
@@ -95,7 +99,7 @@ export const TextResultContainer = styled.div`
 export const ResultTitle = styled.h3`
   font-size: 16px;
   font-weight: 400;
-  color: #1a0dab;
+  color: #fffff;
   margin: 0 0 4px 0;
   cursor: pointer;
 
