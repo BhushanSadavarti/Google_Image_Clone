@@ -1,4 +1,3 @@
-// src/components/LensSearch/styles.js
 import styled from "styled-components";
 
 export const LensContainer = styled.div`

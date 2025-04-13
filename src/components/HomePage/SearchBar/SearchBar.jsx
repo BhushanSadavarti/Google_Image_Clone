@@ -5,7 +5,7 @@ import { LuFileSearch } from "react-icons/lu";
 import { FaGraduationCap } from "react-icons/fa";
 import { IoIosMusicalNote } from "react-icons/io";
 import { WiTime4 } from "react-icons/wi";
-import { MdTranslate, MdPhotoLibrary } from "react-icons/md";
+import { MdTranslate } from "react-icons/md";
 import {
   Container,
   Logo,
@@ -21,7 +21,7 @@ import {
   MicScreenWrapper,
   DotContainer,
   Dot,
-  MicText
+  MicText,
 } from "./styles";
 import FeedList from "../RealTimeFeed/FeedList/FeedList";
 
@@ -45,17 +45,16 @@ const SearchBar = ({ onImageSearchClick }) => {
 
   const filteredSuggestions = suggestions.filter((item) =>
     item.toLowerCase().includes(searchTerm.toLowerCase())
-);
+  );
 
-const { isListening, startListening, stopListening, transcript } =
-  useVoiceInput(setSearchTerm);
+  const { isListening, startListening, stopListening, transcript } =
+    useVoiceInput(setSearchTerm);
   const [isMicOpen, setIsMicOpen] = useState(false);
-  const [micState, setMicState] = useState(isListening ? 'listening' : 'tap');
-  const [isListen, setIsListen] = useState(false);
-
+  const [micState, setMicState] = useState(isListening ? "listening" : "tap");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("searchTerm", searchTerm);
     if (searchTerm.trim()) {
       performSearch(searchTerm);
       navigate("/results");
@@ -64,27 +63,39 @@ const { isListening, startListening, stopListening, transcript } =
 
   useEffect(() => {
     if (isMicOpen) {
-      setMicState(isListening ? 'listening' : 'tap');
-      setIsListen(true);
+      setMicState(isListening ? "listening" : "tap");
 
       const timer = setTimeout(() => {
-        setMicState('tap');
-        setIsListen(false);
+        setMicState("tap");
       }, 10000);
 
       return () => clearTimeout(timer);
     }
-  }, [isMicOpen]);
+  }, [isMicOpen, isListening]);
 
-  // const clearSearch = () => {
-  //   setSearchTerm("");
-  // };
+  useEffect(() => {
+    if (transcript) {
+      setSearchTerm(transcript);
+      const timer = setTimeout(() => {
+        performSearch(transcript);
+        navigate("/results");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [transcript, performSearch, navigate, setSearchTerm]);
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  };
 
   return (
     <Container>
       <Logo>Google</Logo>
 
-      <SearchBarWrapper focused={inputFocused} onSubmit={handleSubmit}>
+      <SearchBarWrapper focused={inputFocused}>
         <IoSearch color="#b0b0b0" size={20} />
 
         <SearchInput
@@ -94,6 +105,7 @@ const { isListening, startListening, stopListening, transcript } =
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={() => setInputFocused(true)}
           onBlur={() => setInputFocused(false)}
+          onKeyDown={handleKeyDown}
         />
         <IconButton
           type="button"
@@ -102,15 +114,19 @@ const { isListening, startListening, stopListening, transcript } =
               stopListening();
             } else {
               startListening();
-              setIsMicOpen(true); 
+              setIsMicOpen(true);
             }
           }}
-          // onClick={() => setIsMicOpen(true)}
           isActive={isListening}
+          aria-label="Toggle microphone"
         >
           <FiMic color={isListening ? "#4285f4" : "#ffff"} />
         </IconButton>
-        <IconButton type="button" onClick={onImageSearchClick}>
+        <IconButton
+          type="button"
+          onClick={onImageSearchClick}
+          aria-label="Search by image"
+        >
           <FiCamera color="#ffff" />
         </IconButton>
       </SearchBarWrapper>
@@ -129,7 +145,6 @@ const { isListening, startListening, stopListening, transcript } =
           ))}
         </SuggestionBox>
       )}
-      
 
       <IconsWrapper>
         <IconButtonRounded bg="#5f5b32">
@@ -157,20 +172,24 @@ const { isListening, startListening, stopListening, transcript } =
               <Dot color="green" />
             </DotContainer>
           ) : (
-            <MicText>Tap the mic</MicText>
+            <MicText>Tap the Mic</MicText>
           )}
-          <button style={{
-            background: 'transparent',
-            border: '1px solid #9aa0a6',
-            padding: '8px 16px',
-            color: '#9aa0a6',
-            borderRadius: '20px',
-            marginTop: '20px',
-            cursor: 'pointer'
-          }}>🎵 Search a song</button>
+          <button
+            style={{
+              background: "transparent",
+              border: "1px solid #9aa0a6",
+              padding: "8px 16px",
+              color: "#9aa0a6",
+              borderRadius: "20px",
+              marginTop: "20px",
+              cursor: "pointer",
+            }}
+          >
+            🎵 Search a song
+          </button>
         </MicScreenWrapper>
       )}
-      
+
       <FeedList />
     </Container>
   );

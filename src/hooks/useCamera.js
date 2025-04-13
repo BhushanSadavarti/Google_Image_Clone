@@ -1,4 +1,3 @@
-// src/hooks/useCamera.js
 import { useCallback } from "react";
 import { Camera, CameraResultType } from "@capacitor/camera";
 

@@ -1,4 +1,3 @@
-// src/components/ResultsPage/styles.js
 import styled, { keyframes } from "styled-components";
 
 export const ResultsContainer = styled.div`
@@ -17,7 +16,7 @@ export const ResultsHeader = styled.header`
   top: 0;
   background-color: #fff;
   z-index: 100;
-   background-color: #202124;
+  background-color: #202124;
 
   button {
     background: transparent;
@@ -39,10 +38,10 @@ export const ResultsHeader = styled.header`
 export const SearchImagePreview = styled.div`
   width: 100%;
   padding: 12px;
-  background-color: #f8f9fa;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #dfe1e5;
+  background-color: #202124;
 
   img {
     height: 80px;
@@ -52,8 +51,8 @@ export const SearchImagePreview = styled.div`
 `;
 
 export const ResultsWrapper = styled.div`
-height: 100vh;
- background-color: #202124;
+  height: 100vh;
+  background-color: #202124;
   padding: 16px;
 `;
 
@@ -77,7 +76,7 @@ export const ImageResultContainer = styled.div`
   margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid #ebebeb;
-  color: #ffffff
+  color: #ffffff;
 `;
 
 export const TextResultContainer = styled.div`

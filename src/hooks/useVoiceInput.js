@@ -1,4 +1,3 @@
-// src/hooks/useVoiceInput.js
 import { useState, useEffect, useCallback } from "react";
 
 const useVoiceInput = (onTranscriptChange) => {

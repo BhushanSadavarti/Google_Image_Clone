@@ -20,7 +20,7 @@ const Header = () => {
 
   const toggleDropdown = () => setDropdown(!dropdown);
 
-  const userInitial = "A"; // Can be dynamic
+  const userInitial = "A";
 
   return (
     <Container>
