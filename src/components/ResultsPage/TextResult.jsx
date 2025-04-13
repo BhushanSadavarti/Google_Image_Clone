@@ -1,4 +1,3 @@
-// src/components/ResultsPage/TextResult.jsx
 import React from "react";
 import {
   TextResultContainer,

@@ -1,4 +1,3 @@
-// src/components/ResultsPage/ResultsPage.jsx
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
@@ -15,10 +14,19 @@ import {
 import { ArrowLeft } from "lucide-react";
 
 const ResultsPage = () => {
-  const { searchTerm, searchImage, results, loading, performSearch } = useContext(AppContext);
+  const {
+    searchTerm,
+    setSearchTerm,
+    searchImage,
+    results,
+    loading,
+    performSearch,
+    transcript,
+  } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleBack = () => {
+    setSearchTerm("");
     navigate("/");
   };
 
@@ -32,18 +40,13 @@ const ResultsPage = () => {
         <button onClick={handleBack}>
           <ArrowLeft size={20} />
         </button>
-
-        {/* <SearchBar
-          onImageSearchClick={handleImageSearch}
-          placeholder="Search Google"
-        /> */}
       </ResultsHeader>
 
-      {/* {searchImage && (
+      {searchImage && (
         <SearchImagePreview>
           <img src={searchImage} alt="Search" />
         </SearchImagePreview>
-      )} */}
+      )}
 
       <ResultsWrapper>
         {loading ? (

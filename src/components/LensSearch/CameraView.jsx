@@ -1,4 +1,3 @@
-// src/components/LensSearch/CameraView.jsx
 import React, { useRef, useEffect } from "react";
 import { CameraViewContainer } from "./styles";
 

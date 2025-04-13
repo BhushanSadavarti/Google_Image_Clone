@@ -1,4 +1,3 @@
-// src/components/LensSearch/ImageCropper.jsx
 import React, { useState, useRef, useEffect } from "react";
 import { CropperContainer, CropperControls } from "./styles";
 

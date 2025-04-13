@@ -1,5 +1,5 @@
 import React from "react";
-import FeedCardComponent from "../cardComponent/card"; // Adjust path as needed
+import FeedCardComponent from "../cardComponent/card";
 
 const dummyFeedData = [
   {

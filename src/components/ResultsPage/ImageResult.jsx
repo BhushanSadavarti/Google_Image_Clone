@@ -1,4 +1,3 @@
-// src/components/ResultsPage/ImageResult.jsx
 import React from "react";
 import {
   ImageResultContainer,
